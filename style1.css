@@ -1,0 +1,39 @@
+
+h2 {
+	display: inline-block;
+	color: yellowgreen;
+
+}
+
+hr {
+	text-align: right; 
+	margin: 0 0 0 auto;
+	width: 95%;
+
+
+}
+
+
+.second-page {
+
+	display: none;
+}
+
+div {
+	border: 3px solid grey; 
+	width: 300px;
+	margin:10px;
+	margin-right: 0px;
+	padding: 15px;
+	padding-right: 0px;
+	display: inline-block;
+}
+
+article {
+
+	height: 150px;
+}
+
+.button {
+	display: none;
+}
