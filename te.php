@@ -7,23 +7,23 @@ $json = json_decode( $json_data, true );
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SkyNetApp</title>
-	<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<link rel="stylesheet" href="style2.css">
+<title>SkyNetApp</title>
+<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+<link rel="stylesheet" href="tstyle.css">
 </head>
 <body>
 
 <!---->
 <?php foreach ($json['tarifs'] as $key => $value): ?>
-<div id="<?=$key?>" class="button"><?=$json['tarifs'][$key]['title']?></div>   
+<div id="<?=$key?>" class="button"><div class="arrow-back"></div>&nbspТариф "<?=$json['tarifs'][$key]['title']?>"</div>   
 <div id="<?=$key?>-p" class="first-page">
 	
 	<h2>Тариф "<?=$json['tarifs'][$key]['title']?>"</h2>
     <hr>
     <article>
-    <p><?=$json['tarifs'][$key]['speed']?> М/б</p>
-	
-<?php if ($key != 0):?>
+    <p><span><?=$json['tarifs'][$key]['speed']?> М/б</span></p>
+	<div class="arrow-forward"></div>
+	<?php if ($key != 0):?>
     <?php foreach ($json['tarifs'][$key]['free_options'] as $ke => $value):?>
 
 		<p><?=$json['tarifs'][$key]['free_options'][$ke]?></p>
@@ -40,10 +40,12 @@ $json = json_decode( $json_data, true );
 		
 	<div id="<?=$key?>-p-<?=$k?>"  class = "second-page"> 
 
-		<p><h2><?=$json['tarifs'][$key]['tarifs'][$k]['title']?></h2></p>
+		<h2><?=$json['tarifs'][$key]['tarifs'][$k]['title']?></h2>
 		<hr>
-		<p><?=$json['tarifs'][$key]['tarifs'][$k]['price']?></p>
+
+		<p><?=$json['tarifs'][$key]['tarifs'][$k]['price']?><div class="arrow-forward"></div></p>
 		<p><?=$json['tarifs'][$key]['tarifs'][$k]['speed']?></p>
+
     </div>
 
     <?php endforeach;?>
@@ -58,9 +60,7 @@ $('.first-page').on('click', function(){
 	var $n = parseInt($id);
 	for (var i = 0; i < 4; i++) {	
 		$('#'+$id+'-'+i).show();
-
 	}// end for
-	
 	$('#'+$n).show();
 });// end function
 
@@ -68,6 +68,7 @@ $('.second-page').on('click', function(){
 	$('.second-page').hide();
 	var $id = $(this).attr('id');
 	$('#'+$id).show();
+	
 });// end function
 
 $('.button').on('click', function(){
@@ -76,11 +77,10 @@ $('.button').on('click', function(){
 		$('.first-page').show();
 		$('.second-page').hide();
 		$(this).hide();
-	}
-	else { for (var i = 0; i < 4; i++) {
-		
-	
+	}else { 
+		for (var i = 0; i < 4; i++) {
 		$('#'+ $id + '-p-'+i).show();
+
 	}//end for
 }
 });//end function

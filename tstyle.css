@@ -1,0 +1,64 @@
+h2 {
+
+	color: yellowgreen;
+}
+
+hr {
+	text-align: right; 
+	margin: 0 0 0 auto;
+	width: 95%;
+}
+
+.second-page {
+
+	display: none;
+	border: 2px solid grey; 
+	width: 250px;
+	margin:10px;
+	margin-right: 0px;
+	padding: 15px;
+	position: static;
+	float: left;
+}
+
+.first-page {
+	border: 2px solid grey; 
+	width: 250px;
+	margin:10px;
+	margin-right: 0px;
+	padding: 15px;
+	padding-right: 0px;
+	display: inline-block;
+	position: static;
+}
+
+article {
+
+	height: 150px;
+}
+
+.button {
+	width: 250px;
+	border: 2px outset green; 
+	margin: 10px;
+	padding: 15px;
+	display: none;
+
+}
+.arrow-back {
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-right-color: green;
+	border-left: 0;
+	float: left;
+}
+
+.arrow-forward {
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-left-color: green;
+	border-right: : 0;
+	float: right;
+}
