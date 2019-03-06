@@ -12,19 +12,20 @@ hr {
 .second-page {
 
 	display: none;
-	border: 2px solid grey; 
+	border: 3px double green; 
 	width: 250px;
-	margin:10px;
+	margin: 10px;
 	margin-right: 0px;
 	padding: 15px;
+	padding-right: 0px;
 	position: static;
 	float: left;
 }
 
 .first-page {
-	border: 2px solid grey; 
+	border: 3px double green; 
 	width: 250px;
-	margin:10px;
+	margin: 10px;
 	margin-right: 0px;
 	padding: 15px;
 	padding-right: 0px;
@@ -41,9 +42,8 @@ article {
 	width: 250px;
 	border: 2px outset green; 
 	margin: 10px;
-	padding: 15px;
+	padding: 9px;
 	display: none;
-
 }
 .arrow-back {
 	width: 0;
