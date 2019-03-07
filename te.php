@@ -1,8 +1,13 @@
 
 <?php
+// get data
 $json_data = @file_get_contents( "http://sknt.ru/job/frontend/data.json" );
 $json = json_decode( $json_data, true );
-
+// sort array
+	uasort($json['tarifs'][0]['tarifs'], function ($item1, $item2) {	
+		if ($item1['ID'] == $item2['ID']) return 0;
+    	return $item1['ID'] < $item2['ID'] ? -1 : 1;
+	});
 ?>
 
 <!DOCTYPE html>
@@ -18,20 +23,25 @@ $json = json_decode( $json_data, true );
 
 <!---->
 <?php foreach ($json['tarifs'] as $key => $value): ?>
-<div id="<?=$key?>-b" class="button"><div class="arrow-back"></div>&nbspТариф "<?=$json['tarifs'][$key]['title']?>"</div>   
+<div id="<?=$key?>-b" class="button"><div class="arrow-back"></div>
+<div><div class="hidT">&nbsp &nbsp Тариф "<?=$json['tarifs'][$key]['title']?>"
+</div>
+<span class="choT">&nbsp &nbsp Выбрать тариф</span>
+</div>   
+</div>
 <div id="<?=$key?>-p" class="first-page">
 	
 	<h2>Тариф "<?=$json['tarifs'][$key]['title']?>"</h2>
     <hr>
     <article>
-    <p><span><?=$json['tarifs'][$key]['speed']?> М/б</span></p>
+    <span class="speed"><?=$json['tarifs'][$key]['speed']?> М/б</span>
 	<div class="arrow-forward"></div>
 	<?php if ($key != 0):?>
     <?php foreach ($json['tarifs'][$key]['free_options'] as $ke => $value):?>
 
 		<p><?=$json['tarifs'][$key]['free_options'][$ke]?></p>
 
-   <?php endforeach;?>
+    <?php endforeach;?>
 <?php endif;?>
 	</article>
 	<hr>
@@ -42,22 +52,23 @@ $json = json_decode( $json_data, true );
 	<?php foreach ($json['tarifs'][$key]['tarifs'] as $k => $value): ?>
 
 	<div id="<?=$json['tarifs'][$key]['tarifs'][$k]['ID']?>"  class = "second-page"> 
-		<h2 class="third">Тариф "<?=$json['tarifs'][$key]['title']?>"</h2>
+		<h3 class="third">Тариф "<?=$json['tarifs'][$key]['title']?>"</h3>
 		<hr class="third">
-		<h2><?=$json['tarifs'][$key]['tarifs'][$k]['pay_period']?>&nbsp мес.</h2>
+		<span class="third"><b>Период оплаты </span><span><?=$json['tarifs'][$key]['tarifs'][$k]['pay_period']?> мес.</b></span>
 		<hr class="sale">
 		<p><b><?=($json['tarifs'][$key]['tarifs'][$k]['price'])/($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?>&nbsp &#x20BD &#47 мес</b></p>
 		<p>разовый платёж - <?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD<div class="arrow-forward"></div></p>
 		<p class="third">со счёта спишется - <?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD</p>
+		<div class="opac">
 		<p class="third">вступит в силу - сегодня</p>
 		<p class="third">активно до - <?=gmdate("d.m.Y",(int)($json['tarifs'][$key]['tarifs'][$k]['new_payday']))?></p>
-
+		</div>
 		<?php if ($json['tarifs'][$key]['tarifs'][$k]['pay_period'] != 1):?>
 		
 		<p class="sale">cкидка - <?=(($json['tarifs'][$key]['tarifs'][0]['price'])-($json['tarifs'][$key]['tarifs'][$k]['price'])/($json['tarifs'][$key]['tarifs'][$k]['pay_period']))*($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?> &#x20BD</p>
 		
 		<?php endif;?>
-
+		<div class="third" type="button">Выбрать</div>
     </div>
 
     <?php endforeach;?>
@@ -65,7 +76,12 @@ $json = json_decode( $json_data, true );
 <?php endforeach; ?>
 
 <script>
-
+$('#0-p .speed').css('background-color','grey');
+$('#1-p .speed').css('background-color','lightblue');
+$('#2-p .speed').css('background-color','orange');
+$('#3-p .speed').css('background-color','lightblue');
+$('#4-p .speed').css('background-color','orange');
+ 
 $('.first-page').on('click', function(){
 	$('.first-page').hide();
 	var $id = $(this).attr('id');	
@@ -87,6 +103,8 @@ $('.second-page').on('click', function(){
 	$('.arrow-forward').hide();
 	$('.sale').hide();
 	$('.third').show();
+	$('.choT').show();
+	$('.hidT').hide();
 
 });// end function
 
@@ -97,11 +115,18 @@ $('.button').on('click', function(){
 		$('.first-page').show();
 		$('.second-page').hide();
 		$(this).hide();
+		$('.choT').hide();
+		$('.hidT').show();
+
 	}else { 
 		for (var i = 1; i < 5; i++) {
 		$('#'+ ($b*4+i)).show();
 	}//end for
 	$('.arrow-forward').show();
+	$('.third').hide();
+	$('.sale').show();
+	$('.choT').hide();
+	$('.hidT').show();
 }
 });//end function
 
