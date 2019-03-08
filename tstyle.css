@@ -1,29 +1,15 @@
 h2, h3 {
-
 	color: yellowgreen;
 }
 
 hr {
 	text-align: right; 
-	margin: 0 0 0 auto;
+	margin: 0px 0px 10px auto;
 	width: 95%;
 }
 
-.second-page {
-
-	display: none;
-	border: 3px double green; 
-	width: 250px;
-	margin: 10px;
-	margin-right: 0px;
-	padding: 15px;
-	padding-right: 0px;
-	position: static;
-	float: left;
-}
-
 .first-page {
-	border: 3px double green; 
+	border: 2px solid green; 
 	width: 250px;
 	margin: 10px;
 	margin-right: 0px;
@@ -33,8 +19,20 @@ hr {
 	position: static;
 }
 
-article {
+.second-page {
+	display: none;
+	border: 2px solid green; 
+	width: 250px;
+	min-height: 140px;
+	margin: 10px;
+	margin-right: 0px;
+	padding: 15px;
+	padding-right: 0px;
+	position: static;
+	float: left;
+}
 
+article {
 	height: 150px;
 }
 
@@ -82,5 +80,23 @@ div[type = "button"]{
 .speed {
 	margin: 5px;
 	padding: 5px;
-	padding-top: 0px;
+	color: white;
+}
+
+@media only screen and (max-width: 640px) {
+	div.conteiner {
+		width: 300px;
+	}
+}
+
+@media only screen and (min-width: 640px) and (max-width: 1023px) {
+	div.conteiner {
+		width: 600px;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	div.conteiner {
+		width: 900px;
+	}
 }
