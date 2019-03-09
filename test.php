@@ -25,40 +25,56 @@ $json = json_decode( $json_data, true );
 <?php foreach ($json['tarifs'] as $key => $value): ?>
 
 <div id="<?=$key?>-b" class="button"><div class="arrow-back"></div>
-<div><div class="hidT">&nbsp &nbsp Тариф "<?=$json['tarifs'][$key]['title']?>"
-</div>
-<span class="choT">&nbsp &nbsp Выбрать тариф</span>
-</div>   
+	<div>
+		<div class="hidT">&nbsp &nbsp Тариф "<?=$json['tarifs'][$key]['title']?>"
+		</div>
+		<div class="choT">&nbsp &nbsp Выбрать тариф</div>
+	</div>   
 </div>
 <div id="<?=$key?>-p" class="first-page">
-	<h2>Тариф "<?=$json['tarifs'][$key]['title']?>"</h2>
+	<div class="header">Тариф "<?=$json['tarifs'][$key]['title']?>"</div>
     <hr>
-    <article>
-    <span class="speed"><?=$json['tarifs'][$key]['speed']?> М/б</span>
+    <div class="article">
+    <div><span class="speed"><?=$json['tarifs'][$key]['speed']?> М/б</span></div>
 	<div class="arrow-forward"></div>
 	
 	<?php if ($key != 0):?>
     	<?php foreach ($json['tarifs'][$key]['free_options'] as $ke => $value):?>
 
-		<p><?=$json['tarifs'][$key]['free_options'][$ke]?></p>
+		<div class="free-options"><?=$json['tarifs'][$key]['free_options'][$ke]?></div>
 
     	<?php endforeach;?>
 	<?php endif;?>
-	</article>
+
+	</div>
 	<hr>
 	<a href='<?=$json['tarifs'][$key]['link']?>'>узнать подробнее на сайте www.sknt.ru</a>
 </div>
 
 
 	<?php foreach ($json['tarifs'][$key]['tarifs'] as $k => $value): ?>
-
+		
 	<div id="<?=$json['tarifs'][$key]['tarifs'][$k]['ID']?>"  class = "second-page"> 
-		<h3 class="third">Тариф "<?=$json['tarifs'][$key]['title']?>"</h3>
+		<div class="third header">Тариф "<?=$json['tarifs'][$key]['title']?>"</div>
 		<hr class="third">
-		<span class="third"><b>Период оплаты</b> </span><span><b><?=$json['tarifs'][$key]['tarifs'][$k]['pay_period']?> мес.</b></span>
+		<span class="third"><b class="period">Период оплаты - </b></span>
+		<?php if ($json['tarifs'][$key]['tarifs'][$k]['pay_period'] == 1) {
+			$a = "";
+		} elseif ($json['tarifs'][$key]['tarifs'][$k]['pay_period'] == 3) {
+			$a = "а";
+		} else {
+			$a = "ев";
+		}
+		?>
+		<span class="pay-period"><b><?=$json['tarifs'][$key]['tarifs'][$k]['pay_period']?> месяц<?= $a ?></b></span>
 		<hr class="sale">
-		<p><b><?=($json['tarifs'][$key]['tarifs'][$k]['price'])/($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?>&nbsp &#x20BD &#47 мес</b></p>
-		<p>разовый платёж - <?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD<div class="arrow-forward"></div></p>
+		<p>
+			<b><?=($json['tarifs'][$key]['tarifs'][$k]['price'])/($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?>
+				&nbsp &#x20BD &#47 мес</b>
+		</p>
+		<p>разовый платёж - <?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD
+		<div class="arrow-forward"></div>
+		</p>
 		<p class="third">со счёта спишется - <?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD</p>
 		<div class="opac">
 			<p class="third">вступит в силу - сегодня</p>
@@ -67,7 +83,9 @@ $json = json_decode( $json_data, true );
 
 		<?php if ($json['tarifs'][$key]['tarifs'][$k]['pay_period'] != 1):?>
 		
-			<p class="sale">cкидка - <?=(($json['tarifs'][$key]['tarifs'][0]['price'])-($json['tarifs'][$key]['tarifs'][$k]['price'])/($json['tarifs'][$key]['tarifs'][$k]['pay_period']))*($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?> &#x20BD</p>
+			<p class="sale">cкидка - <?=(($json['tarifs'][$key]['tarifs'][0]['price'])-
+			($json['tarifs'][$key]['tarifs'][$k]['price'])/($json['tarifs'][$key]['tarifs'][$k]['pay_period']))*
+			($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?> &#x20BD</p>
 		
 		<?php endif;?>
 
@@ -85,6 +103,7 @@ $('#1-p .speed').css('background-color','lightblue');
 $('#2-p .speed').css('background-color','orange');
 $('#3-p .speed').css('background-color','lightblue');
 $('#4-p .speed').css('background-color','orange');
+
  
 $('.first-page').on('click', function(){
 	$('.first-page').hide();
@@ -96,6 +115,7 @@ $('.first-page').on('click', function(){
 	$('#'+$n+'-'+'b').show();
 	$('.third').hide();
 	$('.sale').show();
+	$('.pay-period').addClass('header');
 
 });// end function
 
@@ -109,6 +129,7 @@ $('.second-page').on('click', function(){
 	$('.third').show();
 	$('.choT').show();
 	$('.hidT').hide();
+	$('.pay-period').removeClass('header');
 
 });// end function
 
@@ -121,7 +142,6 @@ $('.button').on('click', function(){
 		$(this).hide();
 		$('.choT').hide();
 		$('.hidT').show();
-
 	}else { 
 		for (var i = 1; i < 5; i++) {
 		$('#'+ ($b*4+i)).show();
@@ -131,7 +151,8 @@ $('.button').on('click', function(){
 	$('.sale').show();
 	$('.choT').hide();
 	$('.hidT').show();
-}
+	$('.pay-period').addClass('header');
+	}
 });//end function
 </script>
 </body>
