@@ -82,7 +82,7 @@ $json = json_decode( $json_data, true );
 		<hr class="sale">
 		<div class="period-block">
 			<b><?=($json['tarifs'][$key]['tarifs'][$k]['price'])/
-			($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?>&#x20BD&#47мес</b>
+			($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?> &#x20BD&#47мес</b>
 		</div>
 		<div class="arrow-forward"></div>
 		<div class="once-pay">разовый платёж - <?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD</div>
