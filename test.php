@@ -26,8 +26,7 @@ $json = json_decode( $json_data, true );
 
 <div id="<?=$key?>-b" class="button"><div class="arrow-back"></div>
 	<div>
-		<div class="hidT">&nbsp &nbsp Тариф "<?=$json['tarifs'][$key]['title']?>"
-		</div>
+		<div class="hidT">&nbsp &nbsp Тариф "<?=$json['tarifs'][$key]['title']?>"</div>
 		<div class="choT">&nbsp &nbsp Выбрать тариф</div>
 	</div>   
 </div>
@@ -35,7 +34,16 @@ $json = json_decode( $json_data, true );
 	<div class="header">Тариф "<?=$json['tarifs'][$key]['title']?>"</div>
     <hr>
     <div class="article">
-    <div><span class="speed"><?=$json['tarifs'][$key]['speed']?> М/б</span></div>
+    <div><span class="speed"><?=$json['tarifs'][$key]['speed']?> Мбит&#47c</span></div>
+
+    
+	<?php 
+	$max = ($json['tarifs'][$key]['tarifs'][0]['price'])/($json['tarifs'][$key]['tarifs'][0]['pay_period']);
+	$min = ($json['tarifs'][$key]['tarifs'][3]['price'])/($json['tarifs'][$key]['tarifs'][3]['pay_period']);
+	?>
+
+	<div class="price"><?=$min?> - <?=$max?> &#x20BD&#47мес</div>
+
 	<div class="arrow-forward"></div>
 	
 	<?php if ($key != 0):?>
@@ -48,16 +56,18 @@ $json = json_decode( $json_data, true );
 
 	</div>
 	<hr>
-	<a href='<?=$json['tarifs'][$key]['link']?>'>узнать подробнее на сайте www.sknt.ru</a>
+	<div class="link"><a href='<?=$json['tarifs'][$key]['link']?>'>узнать подробнее на сайте www.sknt.ru</a></div>
 </div>
 
 
 	<?php foreach ($json['tarifs'][$key]['tarifs'] as $k => $value): ?>
 		
-	<div id="<?=$json['tarifs'][$key]['tarifs'][$k]['ID']?>"  class = "second-page"> 
+	<div id="<?=$json['tarifs'][$key]['tarifs'][$k]['ID']?>" class = "second-page"> 
 		<div class="third header">Тариф "<?=$json['tarifs'][$key]['title']?>"</div>
 		<hr class="third">
-		<span class="third"><b class="period">Период оплаты - </b></span>
+		<div>
+			<span class="third"><b class="period">Период оплаты - </b></span>
+		
 		<?php if ($json['tarifs'][$key]['tarifs'][$k]['pay_period'] == 1) {
 			$a = "";
 		} elseif ($json['tarifs'][$key]['tarifs'][$k]['pay_period'] == 3) {
@@ -66,30 +76,34 @@ $json = json_decode( $json_data, true );
 			$a = "ев";
 		}
 		?>
-		<span class="pay-period"><b><?=$json['tarifs'][$key]['tarifs'][$k]['pay_period']?> месяц<?= $a ?></b></span>
-		<hr class="sale">
-		<p>
-			<b><?=($json['tarifs'][$key]['tarifs'][$k]['price'])/($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?>
-				&nbsp &#x20BD &#47 мес</b>
-		</p>
-		<p>разовый платёж - <?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD
-		<div class="arrow-forward"></div>
-		</p>
-		<p class="third">со счёта спишется - <?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD</p>
-		<div class="opac">
-			<p class="third">вступит в силу - сегодня</p>
-			<p class="third">активно до - <?=gmdate("d.m.Y",(int)($json['tarifs'][$key]['tarifs'][$k]['new_payday']))?></p>
-		</div>
 
+			<span class="pay-period"><b><?=$json['tarifs'][$key]['tarifs'][$k]['pay_period']?> месяц<?= $a ?></b></span>
+		</div>	
+		<hr class="sale">
+		<div class="period-block">
+			<b><?=($json['tarifs'][$key]['tarifs'][$k]['price'])/
+			($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?>&#x20BD&#47мес</b>
+		</div>
+		<div class="arrow-forward"></div>
+		<div class="once-pay">разовый платёж - <?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD</div>
+		<div class="third">со счёта спишется - <?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD</div>
+		<div class="opac">
+			<div class="third">вступит в силу - сегодня</div>
+			<div class="third">активно до - <?=gmdate("d.m.Y",(int)($json['tarifs'][$key]['tarifs'][$k]['new_payday']))?></div>
+		</div>
+				
 		<?php if ($json['tarifs'][$key]['tarifs'][$k]['pay_period'] != 1):?>
 		
-			<p class="sale">cкидка - <?=(($json['tarifs'][$key]['tarifs'][0]['price'])-
+		<div class="sale">cкидка - <?=(($json['tarifs'][$key]['tarifs'][0]['price'])-
 			($json['tarifs'][$key]['tarifs'][$k]['price'])/($json['tarifs'][$key]['tarifs'][$k]['pay_period']))*
-			($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?> &#x20BD</p>
+			($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?> &#x20BD
+		</div>
 		
-		<?php endif;?>
+		<?php endif;?>	
 
+		<hr class="third">
 		<div class="third" type="button">Выбрать</div>
+
     </div>
 
     <?php endforeach;?>
@@ -98,11 +112,11 @@ $json = json_decode( $json_data, true );
 </div>
 
 <script>
-$('#0-p .speed').css('background-color','grey');
-$('#1-p .speed').css('background-color','lightblue');
-$('#2-p .speed').css('background-color','orange');
-$('#3-p .speed').css('background-color','lightblue');
-$('#4-p .speed').css('background-color','orange');
+$('#0-p .speed').css('background-color','#5C3E2A');
+$('#1-p .speed').css('background-color','#4B59E2');
+$('#2-p .speed').css('background-color','#EA8906');
+$('#3-p .speed').css('background-color','#4B59E2');
+$('#4-p .speed').css('background-color','#EA8906');
 
  
 $('.first-page').on('click', function(){

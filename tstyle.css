@@ -1,15 +1,24 @@
+body {
+	font-family: Arial;
+}
+
 .header {
 	color: yellowgreen;
+	font-weight: bold;
 }
 
 hr {
 	text-align: right; 
 	margin: 5px 0px 10px auto;
-	width: 95%;
+	width: 98%;
+}
+
+.link {
+	margin-left: 0px;
 }
 
 .first-page {
-	border: 2px solid green; 
+	border: 1px solid grey; 
 	width: 250px;
 	margin: 10px;
 	margin-right: 0px;
@@ -21,9 +30,8 @@ hr {
 
 .second-page {
 	display: none;
-	border: 2px solid green; 
+	border: 1px solid grey; 
 	width: 250px;
-	min-height: 140px;
 	margin: 10px;
 	margin-right: 0px;
 	padding: 15px;
@@ -33,21 +41,22 @@ hr {
 }
 
 .article {
-	height: 100px;
+	height: 110px;
 }
 
 .button {
 	width: 250px;
-	border: 2px outset green; 
+	border: 1px outset yellowgreen; 
 	margin: 10px;
-	padding: 9px;
+	padding: 8px;
 	display: none;
+	font-weight: bold;
 }
 .arrow-back {
 	width: 0;
 	height: 0;
 	border: 10px solid transparent;
-	border-right-color: green;
+	border-right-color: yellowgreen;
 	border-left: 0;
 	float: left;
 }
@@ -56,14 +65,14 @@ hr {
 	width: 0;
 	height: 0;
 	border: 10px solid transparent;
-	border-left-color: green;
+	border-left-color: yellowgreen;
 	border-right: : 0;
 	float: right;
 }
 
 div[type = "button"]{
 	background-color: yellowgreen;
-	margin-right: 10px;
+	margin-right: 15px;
 	padding: 5px;
 	text-align: center;
 	color: white;
@@ -71,6 +80,7 @@ div[type = "button"]{
 
 .opac {
 	opacity: .66;
+	margin-top: 5px;
 } 
 
 .choT {
@@ -78,13 +88,20 @@ div[type = "button"]{
 }
 
 .speed {
-	margin: 5px;
-	padding: 5px;
+	margin-left: -15px;
+	padding:5px;
+	padding-left: 15px;
 	color: white;
+	font-weight: bold;
 }
 
-.free-options {
-	margin: 10px;
+.once-pay {
+	margin-top: 10px;
+}
+
+.price {
+	margin: 10px 0px 5px 0px;
+	font-weight: bold;
 }
 
 @media only screen and (max-width: 640px) {
