@@ -1,0 +1,160 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+	font-family: "Segoe UI", Arial, Helvetica, Sans Serif;
+}
+
+hr {
+	text-align: right; 
+	margin: 5px 0px 10px auto;
+	width: 98%;
+}
+
+a {
+	text-decoration: none;
+	color: yellowgreen;
+}
+
+.conteiner {
+	display: grid;
+	grid-gap: 20px;
+	justify-content: space-around;
+	align-content: space-around; 
+}
+
+.header {
+	color: yellowgreen;
+	font-weight: bold;
+}
+
+.link {
+	margin-left: 0px;
+}
+
+.first-page {
+	border-radius: 5px;
+	border: 1px solid #9acd32; 
+	padding: 15px;
+	padding-right: 0px;
+	box-shadow: 0 10px 15px rgba(0,100,0,0.25)
+}
+
+.second-page {
+	display: none;
+	border: 1px solid #9acd32;
+	border-radius: 5px; 
+	padding: 15px;
+	padding-right: 0px;
+	box-shadow: 0 10px 15px rgba(0,100,0,0.25)
+}
+
+.button {
+	border: 1px outset yellowgreen;
+	border-radius: 5px;
+	padding: 8px;
+	display: none;
+	font-weight: bold;
+	box-shadow: 0 10px 15px rgba(0,100,0,0.25)
+}
+
+.article {
+	min-height: 20vh;
+}
+
+.result {
+	text-align: center;
+	padding: 15px;
+}
+
+.arrow-back {
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-right-color: yellowgreen;
+	border-left: 0;
+	float: left;
+}
+
+.arrow-forward {
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-left-color: yellowgreen;
+	border-right: 0;
+	float: right;
+}
+
+.btn-choose {
+	border-radius: 5px;
+	background-color: yellowgreen;
+	margin-right: 15px;
+	padding: 5px;
+	text-align: center;
+	color: white;
+}
+
+.btn-choose:hover {
+	background-color: green;
+}
+
+.opac {
+	opacity: .66;
+	margin-top: 5px;
+} 
+
+.choT {
+	display: none;
+}
+
+.speed {
+	margin-left: -15px;
+	padding:5px;
+	padding-left: 15px;
+	color: white;
+	font-weight: bold;
+}
+
+.once-pay {
+	margin-top: 10px;
+}
+
+.price {
+	margin: 10px 0px 5px 0px;
+	font-weight: bold;
+}
+
+@media only screen and (max-width: 640px) {
+	.conteiner {
+		grid-template-columns: 1fr;
+	}
+
+	.button, .result {
+	grid-column: 1/2;
+	}
+}
+
+@media only screen and (min-width: 640px) and (max-width: 1023px) {
+	.conteiner {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.button, .result {
+	grid-column: 1/3;
+	}
+}
+
+@media only screen and (min-width: 1023px) {
+	.conteiner {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	.button, .result {
+	grid-column: 1/4;
+	}
+}
