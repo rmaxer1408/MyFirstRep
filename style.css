@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  user-select: none;
 }
 
 *, *:before, *:after {
@@ -40,7 +41,7 @@ a {
 	border: 1px solid #9acd32; 
 	padding: 15px;
 	padding-right: 0px;
-	box-shadow: 0 10px 15px rgba(0,100,0, .25);
+	box-shadow: 2px 7px 8px rgba(0,100,0, .4);
 }
 
 .second-page {
@@ -50,7 +51,7 @@ a {
 	border-radius: 5px; 
 	padding: 15px;
 	padding-right: 0px;
-	box-shadow: 0 10px 15px rgba(0,100,0, .25);
+	box-shadow: 2px 7px 8px rgba(0,100,0, .4);
 }
 
 .button {
@@ -60,7 +61,15 @@ a {
 	display: none;
 	font-weight: bold;
 	text-align: center;
-	box-shadow: 0 10px 15px rgba(0,100,0, .25);
+	box-shadow: 2px 7px 8px rgba(0,100,0, .4);
+}
+	
+.button:hover {
+	color: #6fb316;
+}
+
+.button:active {
+	border: inset;
 }
 
 .link {
