@@ -26,7 +26,7 @@ $json = json_decode( $json_data, true );
 	<div class="conteiner">
 <?php foreach ($json['tarifs'] as $key => $value): ?>
 
-	<div id="<?=$key?>-b" class="button"><div class="arrow-back"></div>
+	<div id="<?=$key?>-b" class="button"><div class="arrow-left"></div>
 		<div>
 			<div class="hidT">&nbsp; &nbsp; Тариф "<?=$json['tarifs'][$key]['title']?>"</div>
 			<div class="choT">&nbsp; &nbsp; Выбрать тариф</div>
@@ -45,7 +45,7 @@ $json = json_decode( $json_data, true );
 	?>
 
 		<div class="price"><?=$min?> - <?=$max?> &#x20BD;&#47;мес</div>
-		<div class="arrow-forward"></div>
+		<div class="arrow-right"></div>
 	
 	<?php if ($key != 0):?>
     	<?php foreach ($json['tarifs'][$key]['free_options'] as $ke => $value):?>
@@ -86,7 +86,7 @@ $json = json_decode( $json_data, true );
 			<b><?=($json['tarifs'][$key]['tarifs'][$k]['price'])/
 			($json['tarifs'][$key]['tarifs'][$k]['pay_period'])?> &#x20BD;&#47;мес</b>
 		</div>
-		<div class="arrow-forward"></div>
+		<div class="arrow-right"></div>
 		<div class="once-pay">разовый платёж - 
 			<?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD;
 		</div>
@@ -146,7 +146,7 @@ $('.second-page').on('click', function(){
 	var $id = $(this).attr('id');
 	var $m = parseInt($id);
 	$('#'+$m).show();
-	$('.arrow-forward').hide();
+	$('.arrow-right').hide();
 	$('.sale').hide();
 	$('.third').show();
 	$('.choT').show();
@@ -169,7 +169,7 @@ $('.button').on('click', function(){
 		for (var i = 1; i < 5; i++) {
 		$('#'+ ($b*4+i)).show();
 	}//end for
-	$('.arrow-forward').show();
+	$('.arrow-right').show();
 	$('.third').hide();
 	$('.sale').show();
 	$('.choT').hide();
