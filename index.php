@@ -33,11 +33,11 @@ $json = json_decode( $json_data, true );
 		</div>   
 	</div>
 
-	<div id="<?=$key?>-p" class="first-page">
+	<div id="<?=$key?>-pg" class="first-page">
 		<div class="header">Тариф "<?=$json['tarifs'][$key]['title']?>"</div>
 	    <hr>
 	    <div class="article">
-	    <div><span class="speed"><?=$json['tarifs'][$key]['speed']?> Мбит&#47;c</span></div>
+	    <span class="speed"><?=$json['tarifs'][$key]['speed']?> Мбит&#47;c</span>
     
 	<?php 
 	$max = ($json['tarifs'][$key]['tarifs'][0]['price'])/($json['tarifs'][$key]['tarifs'][0]['pay_period']);
@@ -120,13 +120,13 @@ $json = json_decode( $json_data, true );
 	</div>
 
 <script>
-$('#0-p .speed').css('background-color','#70603E');
-$('#1-p .speed').css('background-color','#0075D9');
-$('#2-p .speed').css('background-color','#EE4700');
-$('#3-p .speed').css('background-color','#0075D9');
-$('#4-p .speed').css('background-color','#EE4700');
 
- 
+$('#0-pg .speed').css('background-color', '#70603E');
+$('#1-pg .speed').css('background-color', '#0075D9');
+$('#2-pg .speed').css('background-color', '#EE4700');
+$('#3-pg .speed').css('background-color', '#0075D9');
+$('#4-pg .speed').css('background-color', '#EE4700');
+
 $('.first-page').on('click', function(){
 	$('.first-page').hide();
 	var $id = $(this).attr('id');	

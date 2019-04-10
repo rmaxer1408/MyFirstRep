@@ -8,6 +8,7 @@ html {
 
 body {
 	font-family: "Segoe UI", Arial, Helvetica, Sans Serif;
+	background-color: #ffffe6;
 }
 
 hr {
@@ -18,7 +19,7 @@ hr {
 
 a {
 	text-decoration: none;
-	color: yellowgreen;
+	color: #6fb316;
 }
 
 .conteiner {
@@ -29,34 +30,37 @@ a {
 }
 
 .header {
-	color: yellowgreen;
+	color: #6fb316;
 	font-weight: bold;
 }
 
 .first-page {
+	background-color: #fff;
 	border-radius: 5px;
 	border: 1px solid #9acd32; 
 	padding: 15px;
 	padding-right: 0px;
-	box-shadow: 0 10px 15px rgba(0,100,0,0.25)
+	box-shadow: 0 10px 15px rgba(0,100,0, .25);
 }
 
 .second-page {
+	background-color: #fff;
 	display: none;
 	border: 1px solid #9acd32;
 	border-radius: 5px; 
 	padding: 15px;
 	padding-right: 0px;
-	box-shadow: 0 10px 15px rgba(0,100,0,0.25)
+	box-shadow: 0 10px 15px rgba(0,100,0, .25);
 }
 
 .button {
-	border: 1px outset yellowgreen;
+	border: 1px outset #6fb316;
 	border-radius: 5px;
 	padding: 8px;
 	display: none;
 	font-weight: bold;
-	box-shadow: 0 10px 15px rgba(0,100,0,0.25)
+	text-align: center;
+	box-shadow: 0 10px 15px rgba(0,100,0, .25);
 }
 
 .link {
@@ -72,11 +76,17 @@ a {
 	padding: 15px;
 }
 
+.result hr {
+	margin: 10px 0px;
+	text-align: center;
+	width: 100%;
+}
+
 .arrow-back {
 	width: 0;
 	height: 0;
 	border: 10px solid transparent;
-	border-right-color: yellowgreen;
+	border-right-color: #6fb316;
 	border-left: 0;
 	float: left;
 }
@@ -85,15 +95,14 @@ a {
 	width: 0;
 	height: 0;
 	border: 10px solid transparent;
-	border-left-color: yellowgreen;
+	border-left-color: #6fb316;
 	border-right: 0;
 	float: right;
 }
 
 .btn-choose {
 	border-radius: 5px;
-	background-color: yellowgreen;
-	margin-right: 15px;
+	background-color: #6fb316;
 	padding: 5px;
 	text-align: center;
 	color: white;
@@ -150,6 +159,10 @@ a {
 }
 
 @media only screen and (min-width: 1023px) {
+	body {
+		padding: 0px 50px;
+	}
+
 	.conteiner {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
