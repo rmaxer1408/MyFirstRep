@@ -36,17 +36,17 @@ $json = json_decode( $json_data, true );
 		    <hr>
 		    <div class="article">
 		    	<span class="speed"><?=$json['tarifs'][$key]['speed']?> Мбит&#47;c</span>
-	<?php 
-	$max = ($json['tarifs'][$key]['tarifs'][0]['price'])/($json['tarifs'][$key]['tarifs'][0]['pay_period']);
-	$min = ($json['tarifs'][$key]['tarifs'][3]['price'])/($json['tarifs'][$key]['tarifs'][3]['pay_period']);
-	?>
+		<?php 
+		$max = ($json['tarifs'][$key]['tarifs'][0]['price'])/($json['tarifs'][$key]['tarifs'][0]['pay_period']);
+		$min = ($json['tarifs'][$key]['tarifs'][3]['price'])/($json['tarifs'][$key]['tarifs'][3]['pay_period']);
+		?>
 			<div class="price"><?=$min?> - <?=$max?> &#x20BD;&#47;мес</div>
 			<div class="arrow-right"></div>
-	<?php if ($key != 0):?>
-	    <?php foreach ($json['tarifs'][$key]['free_options'] as $ke => $value):?>
+		<?php if ($key != 0):?>
+	    	<?php foreach ($json['tarifs'][$key]['free_options'] as $ke => $value):?>
 			<div class="free-options"><?=$json['tarifs'][$key]['free_options'][$ke]?></div>
-	    <?php endforeach;?>
-	<?php endif;?>
+	    	<?php endforeach;?>
+		<?php endif;?>
 			</div>
 			<hr>
 			<div class="link">
@@ -81,9 +81,9 @@ $json = json_decode( $json_data, true );
 			<div class="once-pay">разовый платёж - 
 				<?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD;
 			</div>
-				<div class="third">со счёта спишется - 
-					<?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD;
-				</div>
+			<div class="third">со счёта спишется - 
+				<?=$json['tarifs'][$key]['tarifs'][$k]['price']?> &#x20BD;
+			</div>
 			<div class="opac">
 				<div class="third">вступит в силу - сегодня</div>
 				<div class="third">активно до - 
@@ -101,7 +101,7 @@ $json = json_decode( $json_data, true );
 			<hr class="third">
 			<div class="third btn-choose">Выбрать</div>
 	    </div>
-    	<?php endforeach;?>
+    <?php endforeach;?>
 <?php endforeach; ?>
 	</div>
 
