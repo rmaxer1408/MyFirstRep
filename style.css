@@ -11,7 +11,7 @@ html {
 body {
 	font-family: Arial, Helvetica, Sans Serif;
 	background-color: #efeff4;
-	margin: 0;
+	margin: 1rem;
 	padding: 0;
 }
 
@@ -27,8 +27,6 @@ a {
 .conteiner {
 	display: grid;
 	grid-gap: 1.5rem;
-	justify-content: space-around;
-	align-content: space-around; 
 }
 
 .header {
@@ -36,34 +34,69 @@ a {
 	font-weight: bold;
 }
 
-.first-page {
+#first-page_0 .speed {
+	background-color: #70603E;
+}
+
+#first-page_1 .speed, #first-page_3 .speed {
+	background-color: #0075D9;
+}
+
+#first-page_2 .speed, #first-page_4 .speed {
+	background-color: #EE4700;
+}
+
+.first-page, .second-page, .third-page {
 	background-color: #fff;
 	border: 0.05rem solid #c8c7cc; 
 	padding: 1.5rem;
 	padding-right: 0;
 	transition: 0.2s box-shadow;
+	display: grid;	
 }
+	.first-page:hover {
+		box-shadow: 0 0.3rem 0.8rem rgba(0,100,0, 0.4);
+		cursor: pointer;
+	}
 
-.first-page:hover {
-	box-shadow: 0 0.3rem 0.8rem rgba(0,100,0, 0.4);
-	cursor: pointer;
+	.first-page__section {
+		min-height: 7rem;
+	}
+
+		.speed {
+			margin-left: -1.5rem;
+			padding: 0.5rem;
+			padding-left: 1.5rem;
+			color: white;
+			font-weight: bold;
+		}
+
+		.min-max-price {
+			margin: 1rem 0 0.5rem 0;
+			font-weight: bold;
+		}
+
+.second-page {	
+	display: none;	
 }
+	.one-time-payment {
+		margin-top: 1rem;
+	}
 
-.second-page {
-	background-color: #fff;
+	.second-page:hover {
+		box-shadow: 0 0.3rem 0.8rem rgba(0,100,0, 0.4);
+		cursor: pointer;
+	}
+
+.third-page {
 	display: none;
-	border: 0.05rem solid #c8c7cc;
-	padding: 1.5rem;
-	padding-right: 0;
-	transition: 0.2s box-shadow;
 }
+	.opacity-text {
+		opacity: 0.66;
+		margin-top: 0.5rem;
+	}
 
-.second-page:hover {
-	box-shadow: 0 0.3rem 0.8rem rgba(0,100,0, 0.4);
-	cursor: pointer;
-}
-
-.button {
+.main-button {
 	background-color: #f7f7f8;
 	border: 0.05rem solid #c8c7cc;
 	padding: 0.8rem;
@@ -72,38 +105,29 @@ a {
 	text-align: center;
 	margin-bottom: 1rem;
 	transition: 0.2s box-shadow, 0.2s color;
-}
-	
-.button:hover {
-	color: #6fb316;
-	box-shadow: 0 0.3rem 0.8rem rgba(0,100,0, 0.4);
-	cursor: pointer;
-}
+}	
+	.main-button:hover {
+		color: #6fb316;
+		box-shadow: 0 0.3rem 0.8rem rgba(0,100,0, 0.4);
+		cursor: pointer;
+	}
 
-.button:active {
-	box-shadow: 0 0.1rem 0.4rem rgba(0,100,0, 0.4);
-}
+	.main-button:active {
+		box-shadow: 0 0.1rem 0.4rem rgba(0,100,0, 0.4);
+	}
 
-.link {
-	margin-left: 0;
-}
-
-.article {
-	min-height: 20vh;
-}
-
-.result hr {
-	margin: 1rem 0;
-}
+	.main-button__select {
+		display: none;
+	}
 
 .arrow-left {
 	box-sizing: content-box;
-  	border: 0.1rem solid;
+  	border: 0.15rem solid;
   	height: 0.8rem;
  	width: 0.8rem;
   	border-color: #9acd32 transparent transparent #9acd32;
   	transform: rotate(-45deg);
-  	float: left;
+  	float: left;  	
 }
 
 .arrow-right {
@@ -117,7 +141,7 @@ a {
   	margin: 0.5rem;
 }
 
-.btn-choose {
+.button-select {
 	background-color: #6fb316;
 	padding: 0.5rem;
 	font-weight: 600;
@@ -126,54 +150,40 @@ a {
 	margin-right: 1.5rem;
 	transition: 0.2s background-color;
 }
-
-.btn-choose:hover {
-	background-color: green;
-}
-
-.opac {
-	opacity: 0.66;
-	margin-top: 0.5rem;
-} 
-
-.speed {
-	margin-left: -1.5rem;
-	padding: 0.5rem;
-	padding-left: 1.5rem;
-	color: white;
-	font-weight: bold;
-}
-
-.once-pay {
-	margin-top: 1rem;
-}
-
-.price {
-	margin: 1rem 0 0.5rem 0;
-	font-weight: bold;
-}
-
-.tarif {
-	display: none;
-}
+	.button-select:hover {
+		background-color: green;
+	}
 
 @media only screen and (max-width: 640px) {
+	html {
+		font-size: 120%;
+	}
+
 	.conteiner {
 		grid-template-columns: 1fr;
 	}
 
-	.button, .result {
+	.main-button, .third-page {
 		grid-column: 1/2;
 	}
 }
 
 @media only screen and (min-width: 640px) and (max-width: 1023px) {
+	html {
+		font-size: 110%;
+	}
+
 	.conteiner {
 		grid-template-columns: 1fr 1fr;
 	}
 
-	.button, .result {
+	.main-button, .third-page {
 		grid-column: 1/3;
+		text-align: center;
+		padding-right: 1.5rem;
+	}
+	.button-select {
+		margin-right: 0;
 	}
 }
 
@@ -182,11 +192,17 @@ a {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 
-	.button {
+	.main-button {
 	grid-column: 1/4;
 	}
 
-	.result {
-		grid-column: 2/3;
+	.third-page {
+		grid-column: 1/4;
+		text-align: center;
+		padding-right: 1.5rem;
+	}
+
+	.button-select {
+		margin-right: 0;
 	}
 }
