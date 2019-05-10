@@ -9,8 +9,8 @@ window.addEventListener('load', function () {
 
 	const firstPageClick = function() {
 		let key = this.id.slice(-1);
-		let buttonId = 'button_' + key;
-		let secondPageKey = 'second-page_' + key + '_';
+		let buttonId = `button_${key}`;
+		let secondPageKey = `second-page_${key}_`;
 
 		document.getElementById(buttonId).style.display = 'block';
 
@@ -27,12 +27,12 @@ window.addEventListener('load', function () {
 	const secondPageClick = function() {
 		let keyStr = this.id.slice(-3);
 		let key = keyStr[0];
-		let buttonId = 'button_' + key;
-		let thirdPageId = 'third-page_' + keyStr;
+		let buttonId = `button_${key}`;
+		let thirdPageId = `third-page_${keyStr}`;
 		
 		document.getElementById(thirdPageId).style.display = 'block';
-		document.querySelector('#' + buttonId + ' .main-button__select').style.display = 'block';
-		document.querySelector('#' + buttonId + ' .main-button__tarif').style.display = 'none';		
+		document.querySelector(`#${buttonId} .main-button__select`).style.display = 'block';
+		document.querySelector(`#${buttonId} .main-button__tarif`).style.display = 'none';		
 
 		for (let i = 0; i < secondPageLen; i++) {
 			secondPage[i].style.display = '';
@@ -42,11 +42,11 @@ window.addEventListener('load', function () {
 
 	const mainButtonClick = function() {	
 		let key = this.id.slice(-1);	
-		let buttonId = 'button_' + key;
-		let secondPageKey = 'second-page_' + key + '_';
+		let buttonId = `button_${key}`;
+		let secondPageKey = `second-page_${key}_`;
 
 		
-		if (document.querySelector('#' + buttonId + ' .main-button__tarif').offsetHeight != 0) {
+		if (document.querySelector(`#${buttonId} .main-button__tarif`).offsetHeight != 0) {
 			for (let i = 0; i < secondPageLen; i++) {
 				secondPage[i].style.display = '';
 			};
@@ -57,8 +57,8 @@ window.addEventListener('load', function () {
 			};
 
 		} else {		
-			document.querySelector('#' + buttonId + ' .main-button__select').style.display = '';
-			document.querySelector('#' + buttonId + ' .main-button__tarif').style.display = 'block';
+			document.querySelector(`#${buttonId} .main-button__select`).style.display = '';
+			document.querySelector(`#${buttonId} .main-button__tarif`).style.display = 'block';
 			
 			for (let i = 0; i < thirdPageLen; i++) {
 				thirdPage[i].style.display = '';
