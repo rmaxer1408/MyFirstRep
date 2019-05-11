@@ -3,7 +3,10 @@ window.addEventListener('load', function () {
 	const firstPagesLen = firstPages.length;
 	const secondPages = document.getElementsByClassName('second-page');
 	const secondPagesLen = secondPages.length;
+	const thirdPages = document.getElementsByClassName('third-page');
+	const thirdPagesLen = thirdPages.length;
 	const mainButtons = document.getElementsByClassName('main-button');
+
 
 	const firstPageClick = function() {
 		let key = this.id.slice(-1);
@@ -58,8 +61,8 @@ window.addEventListener('load', function () {
 			document.querySelector(`#${buttonId} .main-button__select`).style.display = '';
 			document.querySelector(`#${buttonId} .main-button__tarif`).style.display = 'block';
 			
-			for (let firstPage of firstPages) {
-				firstPage.style.display = 'none';
+			for (let thirdPage of thirdPages) {
+				thirdPage.style.display = 'none';
 			}
 
 			for (let i = 0; i < 4 ; i++) {
