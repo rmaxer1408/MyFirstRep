@@ -1,11 +1,9 @@
 window.addEventListener('load', function () {
-	const firstPage = document.getElementsByClassName('first-page');
-	const firstPageLen = firstPage.length;
-	const secondPage = document.getElementsByClassName('second-page');
-	const secondPageLen = secondPage.length;
-	const thirdPage = document.getElementsByClassName('third-page');
-	const thirdPageLen = thirdPage.length;
-	const mainButton = document.getElementsByClassName('main-button');
+	const firstPages = document.getElementsByClassName('first-page');
+	const firstPagesLen = firstPages.length;
+	const secondPages = document.getElementsByClassName('second-page');
+	const secondPagesLen = secondPages.length;
+	const mainButtons = document.getElementsByClassName('main-button');
 
 	const firstPageClick = function() {
 		let key = this.id.slice(-1);
@@ -14,9 +12,9 @@ window.addEventListener('load', function () {
 
 		document.getElementById(buttonId).style.display = 'block';
 
-		for (let i = 0; i < firstPageLen; i++){
-			firstPage[i].style.display = 'none';
-		}	
+		for (let firstPage of firstPages) {
+			firstPage.style.display = 'none';
+		}
 
 		for (let i = 0; i < 4 ; i++) {
 			let secondPageId = secondPageKey + i;
@@ -32,10 +30,10 @@ window.addEventListener('load', function () {
 		
 		document.getElementById(thirdPageId).style.display = 'block';
 		document.querySelector(`#${buttonId} .main-button__select`).style.display = 'block';
-		document.querySelector(`#${buttonId} .main-button__tarif`).style.display = 'none';		
+		document.querySelector(`#${buttonId} .main-button__tarif`).style.display = 'none';	
 
-		for (let i = 0; i < secondPageLen; i++) {
-			secondPage[i].style.display = '';
+		for (let secondPage of secondPages) {
+			secondPage.style.display = '';
 		};		
 	};
 
@@ -47,22 +45,22 @@ window.addEventListener('load', function () {
 
 		
 		if (document.querySelector(`#${buttonId} .main-button__tarif`).offsetHeight != 0) {
-			for (let i = 0; i < secondPageLen; i++) {
-				secondPage[i].style.display = '';
-			};
+			for (let secondPage of secondPages) {
+				secondPage.style.display = '';
+			};	
 
-			for (let i = 0; i < firstPageLen; i++) {
-				firstPage[i].style.display = '';
-				mainButton[i].style.display = ''
+			for (let i = 0; i < firstPagesLen; i++) {
+				firstPages[i].style.display = '';
+				mainButtons[i].style.display = '';				
 			};
 
 		} else {		
 			document.querySelector(`#${buttonId} .main-button__select`).style.display = '';
 			document.querySelector(`#${buttonId} .main-button__tarif`).style.display = 'block';
 			
-			for (let i = 0; i < thirdPageLen; i++) {
-				thirdPage[i].style.display = '';
-			};
+			for (let firstPage of firstPages) {
+				firstPage.style.display = 'none';
+			}
 
 			for (let i = 0; i < 4 ; i++) {
 				let secondPageId = secondPageKey + i;
@@ -71,12 +69,12 @@ window.addEventListener('load', function () {
 		};
 	};
 
-	for (let i = 0; i < firstPageLen; i++) {
-		firstPage[i].addEventListener('click', firstPageClick);	
-		mainButton[i].addEventListener('click', mainButtonClick);
+	for (let i = 0; i < firstPagesLen; i++) {
+		firstPages[i].addEventListener('click', firstPageClick);	
+		mainButtons[i].addEventListener('click', mainButtonClick);
 	};
 
-	for (let i = 0; i < secondPageLen; i++) {
-		secondPage[i].addEventListener('click', secondPageClick);
+	for (let i = 0; i < secondPagesLen; i++) {
+		secondPages[i].addEventListener('click', secondPageClick);
 	};
 });
