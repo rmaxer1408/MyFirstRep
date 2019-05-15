@@ -1,13 +1,12 @@
 <?php
-// get data
-$json_data = file_get_contents( 'http://sknt.ru/job/frontend/data.json' );
-$json = json_decode( $json_data, true);
-foreach ($json['tarifs'] as $key => $tarifs) {
-	usort($json['tarifs'][$key]['tarifs'], function ($item1, $item2) {	
-		if ($item1['ID'] === $item2['ID']) return 0;
-		return $item1['ID'] < $item2['ID'] ? -1 : 1;
-	});
-}
+	$json_data = file_get_contents('http://sknt.ru/job/frontend/data.json');
+	$json = json_decode($json_data, true);
+	foreach ($json['tarifs'] as $key => $tarifs) {
+		uasort($json['tarifs'][$key]['tarifs'], function ($item1, $item2) {	
+			if ($item1['ID'] === $item2['ID']) return 0;
+			return $item1['ID'] < $item2['ID'] ? -1 : 1;
+		});
+	}
 ?>
 
 <!DOCTYPE html>
@@ -15,12 +14,12 @@ foreach ($json['tarifs'] as $key => $tarifs) {
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<!--<meta http-equiv="x-ua-compatible" content="ie=edge">-->
 	<title>SkyNetApp</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div class="conteiner">
+	<div class="grid-conteiner">
 <?php foreach ($json['tarifs'] as $key => $tarifs): ?>
 <?php
 	$title = $tarifs['title'];
@@ -30,7 +29,7 @@ foreach ($json['tarifs'] as $key => $tarifs) {
 	if ($key !=0) {
 		$free_options = $tarifs['free_options'];
 	} 
-	else 
+	else
 		$free_options = [];
 
 	foreach ($tarifs['tarifs'] as $tarif) {
@@ -45,24 +44,24 @@ foreach ($json['tarifs'] as $key => $tarifs) {
 			<div class="main-button__tarif">Тариф "<?= $title ?>"</div>
 			<div class="main-button__select">Выбор тарифа</div>		  
 		</div>
-		<!--End Main Button -->	
+		<!--End Main Button -->
 
-		<!-- First Screen -->		
+		<!-- First Screen -->	
 		<div id="first-page_<?= $key ?>" class="first-page">
-			<div class="first-page__header">
+			<header class="first-page__header">
 				<div class="header">Тариф "<?= $title ?>"</div>
 		    	<hr>
-		    </div>
+		    </header>
 		    <div class="first-page__section">
 		    	<span class="speed"><?= $speed ?> Мбит&#47;c</span>	
 				<div class="min-max-price"><?= $min ?> - <?= $max ?> &#x20BD;&#47;мес</div>
 				<div class="arrow-right"></div>			
 				<div class="free-options"><?= implode('<br>', $free_options) ?></div>		
 			</div>
-			<div class="first-page__footer">
+			<footer class="first-page__footer">
 				<hr>
 				<a class="link" href="<?= $link ?>">узнать подробнее на сайте www.sknt.ru</a>
-			</div>		
+			</footer>		
 		</div>
 		<!--End First Screen -->
 
@@ -91,16 +90,16 @@ foreach ($json['tarifs'] as $key => $tarifs) {
 	?>
 
 		<!-- Second Screen -->
-		<div id="second-page_<?= $key.'_'.$k ?>" class="second-page"> 
-			<div class="second-page__header">			
+		<div id="second-page_<?= $key.'_'.$k ?>" class="second-page">
+			<header class="second-page__header">			
 				<b class="header"><?= $pay_period ?> месяц<?= $ending ?></b>			
 				<hr>
-			</div>
-			<div class="arrow-right"></div>
+			</header>			
 			<div class="second-page__section">
 				<div class="price-in-month">
-					<b><?= $price_in_month ?> &#x20BD;&#47;мес</b>
-				</div>			
+					<strong><?= $price_in_month ?> &#x20BD;&#47;мес</strong>
+				</div>		
+				<div class="arrow-right"></div>	
 				<div class="one-time-payment">разовый платёж - <?= $price ?> &#x20BD;</div>
 				<div class="sale"><?= $sale ?></div>
 			</div>	
@@ -109,13 +108,13 @@ foreach ($json['tarifs'] as $key => $tarifs) {
 
 	    <!-- Third Screen -->
 	    <div id="third-page_<?= $key.'_'.$k ?>" class="third-page">
-	    	<div class="third-page__header">
+	    	<header class="third-page__header">
 	    		<div class="header">Тариф "<?= $title ?>"</div>
 	    		<hr>
-	    	</div>
+	    	</header>
 	    	<div class="third-page__section">
 		    	<div class="payment-period">		
-					<b>Период оплаты - <?= $pay_period ?> месяц<?= $ending ?></b>
+					<strong>Период оплаты - <?= $pay_period ?> месяц<?= $ending ?></strong>
 				</div>
 				<div class="one-time-payment">разовый платёж - <?= $price ?> &#x20BD;</div>
 				<div class="charge-off">со счёта спишется - <?= $price ?> &#x20BD;</div>
@@ -124,10 +123,10 @@ foreach ($json['tarifs'] as $key => $tarifs) {
 					<div>активно до - <?= gmdate("d.m.Y",(int)($new_payday)) ?></div>
 				</div>
 			</div>
-			<div class="third-page__footer">
+			<footer class="third-page__footer">
 				<hr>
 				<div class="button-select">Выбрать</div>
-			</div>
+			</footer>
 	    </div>
 	    <!-- End Third Screen -->
     <?php endforeach;?>    	

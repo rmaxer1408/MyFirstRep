@@ -7,14 +7,13 @@ window.addEventListener('load', function () {
 	const thirdPagesLen = thirdPages.length;
 	const mainButtons = document.getElementsByClassName('main-button');
 
-
 	const firstPageClick = function() {
 		let key = this.id.slice(-1);
 		let buttonId = `button_${key}`;
 		let secondPageKey = `second-page_${key}_`;
 
 		document.getElementById(buttonId).style.display = 'block';
-
+		/* for...of isn't supported by IE and Edge */
 		for (let firstPage of firstPages) {
 			firstPage.style.display = 'none';
 		}
@@ -33,7 +32,7 @@ window.addEventListener('load', function () {
 		
 		document.getElementById(thirdPageId).style.display = 'block';
 		document.querySelector(`#${buttonId} .main-button__select`).style.display = 'block';
-		document.querySelector(`#${buttonId} .main-button__tarif`).style.display = 'none';	
+		document.querySelector(`#${buttonId} .main-button__tarif`).style.display = 'none';
 
 		for (let secondPage of secondPages) {
 			secondPage.style.display = '';

@@ -24,14 +24,9 @@ a {
 	color: #007aff;
 }
 
-.conteiner {
+.grid-conteiner {
 	display: grid;
 	grid-gap: 1.5rem;
-}
-
-.header {
-	color: #6fb316;
-	font-weight: bold;
 }
 
 #first-page_0 .speed {
@@ -62,6 +57,10 @@ a {
 	.first-page__section {
 		min-height: 7rem;
 	}
+		.header {
+			color: #6fb316;
+			font-weight: bold;
+		}
 
 		.speed {
 			margin-left: -1.5rem;
@@ -159,7 +158,7 @@ a {
 		font-size: 120%;
 	}
 
-	.conteiner {
+	.grid-conteiner {
 		grid-template-columns: 1fr;
 	}
 
@@ -173,7 +172,7 @@ a {
 		font-size: 110%;
 	}
 
-	.conteiner {
+	.grid-conteiner {
 		grid-template-columns: 1fr 1fr;
 	}
 
@@ -188,7 +187,7 @@ a {
 }
 
 @media only screen and (min-width: 1024px) {
-	.conteiner {
+	.grid-conteiner {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 
